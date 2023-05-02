@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href = "{% static 'styles.css' %}">
+  <title>Document</title>
+</head>
+<body>
+  <div class="title">
+    <h1>{{eventName}}</h1>
+    <a href="/members/">Home</a>
+  </div>
+
+  {% comment %} <div id="preview-div" class="preview-container" style="display: none;">
+    <img id="preview-image" class="preview-image" src="/static/COG/Elocution/ (1).JPG" alt="">
+  </div>
+  <button id="preview-button" class="preview-close" onclick=hide() style="display: none;">X</button> {% endcomment %}
+
+  <div class="images-container">
+    {% for i in imageList %}
+        <div class="responsive">
+            <div class="gallery">
+              <a href="{% static i.img %}" download>
+                <img src="{% static i.cimg %}" alt="Cinque Terre" width="600" height="400" onclick=showImg("{% static i.img %}")>
+              </a>
+            </div>
+            
+        </div>
+    {% endfor %}
+  </div>
+
+  {% comment %} <center>
+    <form action="loadmore/{{imgLim}}" method="post">
+      {% csrf_token %}
+        <button type="submit" class="button-4" role="button">Load More</button>
+    </form>
+  </center> {% endcomment %}
+  <script src="{% static 'script.js' %}"></script>
+  <p align='center'>MultiMedia</p>
+</body>
+</html>
